@@ -63,10 +63,26 @@ function renderSection(section, data) {
         case "billing":
             formHtml = `
                 <form>
-                    <div class="mb-3"><label>Patient Name</label><input type="text" name="patientName" class="form-control" required></div>
-                    <div class="mb-3"><label>Amount</label><input type="number" step="0.01" name="amount" class="form-control" required></div>
-                    <div class="mb-3"><label>Service Type</label><input type="text" name="serviceType" class="form-control" required></div>
-                    <div class="mb-3"><label>Payment Status</label>
+                    <div class="mb-3">
+                        <label>Patient Name</label>
+                        <input type="text" name="patientName" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label>Amount</label>
+                        <input type="number" step="0.01" name="amount" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label>Service Type</label>
+                        <select name="serviceType" class="form-select" required>
+                            <option value="">--Select Service--</option>
+                            <option value="Consultation">Consultation</option>
+                            <option value="Surgery">Surgery</option>
+                            <option value="Lab Test">Lab Test</option>
+                            <option value="Physiotherapy">Physiotherapy</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label>Payment Status</label>
                         <select name="paymentStatus" class="form-select">
                             <option value="Pending">Pending</option>
                             <option value="Paid">Paid</option>
@@ -76,21 +92,72 @@ function renderSection(section, data) {
                 </form>`;
             break;
 
-        case "department":
-            formHtml = `
-                <form>
-                    <div class="mb-3"><label>Name</label><input type="text" name="name" class="form-control" required></div>
-                    <div class="mb-3"><label>Description</label><input type="text" name="description" class="form-control" required></div>
-                    <button type="submit" class="btn btn-success">${editingId ? "Update Department" : "Add Department"}</button>
-                </form>`;
-            break;
+       case "department":
+           formHtml = `
+               <form>
+                   <div class="mb-3">
+                       <label>Name</label>
+                       <input type="text" name="name" class="form-control" required>
+                   </div>
+                   <div class="mb-3">
+                       <label>Description</label>
+                       <select name="description" class="form-select" required>
+                           <option value="">Select Description</option>
+                           <option value="Cardiology">Cardiology</option>
+                           <option value="Neurology">Neurology</option>
+                           <option value="Pediatrics">Pediatrics</option>
+                           <option value="Oncology">Oncology</option>
+                           <option value="Orthopedics">Orthopedics</option>
+                           <option value="Dermatology">Dermatology</option>
+                           <option value="Radiology">Radiology</option>
+                           <option value="ENT">ENT</option>
+                           <option value="Gastroenterology">Gastroenterology</option>
+                           <option value="Urology">Urology</option>
+                           <option value="Nephrology">Nephrology</option>
+                           <option value="Endocrinology">Endocrinology</option>
+                           <option value="Psychiatry">Psychiatry</option>
+                           <option value="Ophthalmology">Ophthalmology</option>
+                           <option value="Pulmonology">Pulmonology</option>
+                           <option value="Rheumatology">Rheumatology</option>
+                           <option value="Pathology">Pathology</option>
+                           <option value="Anesthesiology">Anesthesiology</option>
+                           <option value="Physiotherapy">Physiotherapy</option>
+                           <option value="Nutrition">Nutrition</option>
+                       </select>
+                   </div>
+                   <button type="submit" class="btn btn-success">${editingId ? "Update Department" : "Add Department"}</button>
+               </form>`;
+           break;
 
         case "doctor":
             formHtml = `
                 <form>
-                    <div class="mb-3"><label>Name</label><input type="text" name="name" class="form-control" required></div>
-                    <div class="mb-3"><label>Specialty</label><input type="text" name="specialty" class="form-control" required></div>
-                    <div class="mb-3"><label>Contact</label><input type="text" name="contact" class="form-control" required></div>
+                    <div class="mb-3">
+                        <label>Name</label>
+                        <input type="text" name="name" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label>Specialty</label>
+                        <select name="specialty" class="form-select" required>
+                            <option value="">--Select Specialty--</option>
+                            <option value="Cardiology">Cardiology</option>
+                            <option value="Neurology">Neurology</option>
+                            <option value="Orthopedics">Orthopedics</option>
+                            <option value="Pediatrics">Pediatrics</option>
+                            <option value="Dermatology">Dermatology</option>
+                            <option value="Ophthalmology">Ophthalmology</option>
+                            <option value="Psychiatry">Psychiatry</option>
+                            <option value="Gynecology">Gynecology</option>
+                            <option value="ENT">ENT</option>
+                            <option value="Radiology">Radiology</option>
+                            <option value="Physiotherapy">Physiotherapy</option>
+                            <option value="Urology">Urology</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label>Contact</label>
+                        <input type="text" name="contact" class="form-control" required>
+                    </div>
                     <button type="submit" class="btn btn-success">${editingId ? "Update Doctor" : "Add Doctor"}</button>
                 </form>`;
             break;
@@ -108,10 +175,32 @@ function renderSection(section, data) {
         case "invoice":
             formHtml = `
                 <form>
-                    <div class="mb-3"><label>Patient Name</label><input type="text" name="patientName" class="form-control" required></div>
-                    <div class="mb-3"><label>Amount</label><input type="number" step="0.01" name="amount" class="form-control" required></div>
-                    <div class="mb-3"><label>Service Provided</label><input type="text" name="serviceProvided" class="form-control" required></div>
-                    <div class="mb-3"><label>Payment Status</label>
+                    <div class="mb-3">
+                        <label>Patient Name</label>
+                        <input type="text" name="patientName" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label>Amount</label>
+                        <input type="number" step="0.01" name="amount" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label>Service Provided</label>
+                        <select name="serviceProvided" class="form-select" required>
+                            <option value="">--Select Service--</option>
+                            <option value="Consultation">Consultation</option>
+                            <option value="X-Ray">X-Ray</option>
+                            <option value="MRI Scan">MRI Scan</option>
+                            <option value="Blood Test">Blood Test</option>
+                            <option value="Surgery">Surgery</option>
+                            <option value="Physiotherapy">Physiotherapy</option>
+                            <option value="Vaccination">Vaccination</option>
+                            <option value="Ultrasound">Ultrasound</option>
+                            <option value="ECG">ECG</option>
+                            <option value="Dental Care">Dental Care</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label>Payment Status</label>
                         <select name="paymentStatus" class="form-select">
                             <option value="Pending">Pending</option>
                             <option value="Paid">Paid</option>
@@ -124,15 +213,21 @@ function renderSection(section, data) {
         case "invoiceNotification":
             formHtml = `
                 <form>
-                    <div class="mb-3"><label>Invoice ID</label><input type="number" name="invoiceId" class="form-control" required></div>
-                    <div class="mb-3"><label>Method</label>
-                        <select name="method" class="form-select">
+                    <div class="mb-3">
+                        <label>ID</label>
+                        <input type="number" name="invoiceId" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label>Method</label>
+                        <select name="method" class="form-select" required>
                             <option value="email">Email</option>
                             <option value="whatsapp">WhatsApp</option>
                         </select>
                     </div>
-                    <div class="mb-3"><label>Recipient</label><input type="text" name="recipient" class="form-control" required></div>
-                    <div class="mb-3"><label>Media URL</label><input type="text" name="mediaUrl" class="form-control"></div>
+                    <div class="mb-3">
+                        <label>Enter the Email ID</label>
+                        <input type="email" name="recipient" class="form-control" required>
+                    </div>
                     <button type="submit" class="btn btn-success">Send Notification</button>
                 </form>`;
 
@@ -146,9 +241,8 @@ function renderSection(section, data) {
                 const invoiceId = formData.get("invoiceId");
                 const via = formData.get("method");
                 const to = formData.get("recipient");
-                const mediaUrl = formData.get("mediaUrl");
 
-                fetch(`${BASE_URL}/invoices/${invoiceId}/notify?via=${via}&to=${to}&mediaUrl=${mediaUrl}`, { method: "POST" })
+                fetch(`${BASE_URL}/invoices/${invoiceId}/notify?via=${via}&to=${to}`, { method: "POST" })
                     .then(res => res.text())
                     .then(msg => alert(msg))
                     .catch(err => alert("Failed to send notification: " + err));
@@ -187,7 +281,7 @@ function renderSection(section, data) {
     tableHtml += "<th>Actions</th></tr></thead><tbody>";
 
     data.forEach(item => {
-        const recordId = item.id || item.doctorId || item.appointmentId; // ✅ universal ID handling
+        const recordId = item.patientId || item.doctorId || item.departmentId || item.staffId || item.appointmentId || item.billingId || item.invoiceId || item.id;
         tableHtml += "<tr>";
         sectionFields[section]?.forEach(field => {
             const keys = field.split(".");
@@ -241,8 +335,10 @@ function editRecord(section, id) {
             setTimeout(() => {
                 const form = formArea.querySelector("form");
                 Object.keys(item).forEach(key => {
-                    if (key === "patient" || key === "doctor") {
-                        if (form[key + "Id"]) form[key + "Id"].value = item[key].id || item[key].doctorId;
+                    // Handle nested patient or doctor objects
+                    if ((key === "patient" || key === "doctor") && item[key]) {
+                        const nestedId = item[key].patientId || item[key].doctorId || item[key].id;
+                        if (form[key + "Id"]) form[key + "Id"].value = nestedId;
                     } else if (form[key]) {
                         form[key].value = item[key];
                     }
@@ -254,9 +350,19 @@ function editRecord(section, id) {
 // Delete record
 function deleteRecord(section, id) {
     const apiEndpoint = sectionApiMap[section];
-    if (confirm("Are you sure?")) {
+    if (confirm("Are you sure you want to delete this record?")) {
         fetch(`${BASE_URL}/${apiEndpoint}/${id}`, { method: "DELETE" })
-            .then(() => loadSection(section))
-            .catch(err => console.error("Delete failed:", err));
+            .then(res => {
+                if (res.ok) {
+                    alert("Record deleted successfully ✅");
+                    loadSection(section);
+                } else {
+                    alert("Failed to delete the record ❌");
+                }
+            })
+            .catch(err => {
+                console.error("Delete failed:", err);
+                alert("Error while deleting record: " + err);
+            });
     }
 }
